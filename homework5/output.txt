@@ -1,0 +1,604 @@
+In constructor r = 0 c = 0 v = 0
+Matrix a
+     Empty Matrix           
+
+In constructor r = 3 c = 4 v = 0
+Matrix b
+0 0 0 0 
+0 0 0 0 
+0 0 0 0 
+
+In constructor r = 2 c = 0 v = 7
+Matrix c
+     Empty Matrix           
+
+In constructor r = 0 c = 10 v = 7
+Matrix d
+     Empty Matrix           
+
+In constructor r = 3 c = 10 v = 7
+Matrix e
+7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 
+
+In constructor s = 1 2|3 4|5 6
+Matrix f
+1 2 
+3 4 
+5 6 
+
+In constructor s =  1 2|3 4 |5 6 
+Matrix g
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+In copy constructor
+1 2 
+3 4 
+5 6 
+
+1 2 
+3 4 
+5 6 
+1 2 
+3 4 
+5 6 
+1 2 
+3 4 
+5 6 
+1 2 
+3 4 
+5 6 
+1 2 
+3 4 
+5 6 
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In constructor s =  1 2 |3 4 |5 6 8 
+Matrix h
+     Empty Matrix           
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+In equal operator rhs
+1 2 
+3 4 
+5 6 
+
+Matrix g
+1 2 
+3 4 
+5 6 
+
+Matrix h
+1 2 
+3 4 
+5 6 
+
+Matrix e
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In distructor
+1 2 
+3 4 
+5 6 
+
+In constructor s = 7 9 11|13 15 17 
+Matrix a
+7 9 11 
+13 15 17 
+
+In constructor s =  6 8 10| 12 14 16 
+Matrix b
+6 8 10 
+12 14 16 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+13 17 21 
+25 29 33 
+
+In distructor
+13 17 21 
+25 29 33 
+
+Matrix s
+13 17 21 
+25 29 33 
+
+In constructor s = 13 17 21 | 25 29 33
+Matrix expected ans
+13 17 21 
+25 29 33 
+
+In distructor
+13 17 21 
+25 29 33 
+
+In distructor
+13 17 21 
+25 29 33 
+
+In distructor
+6 8 10 
+12 14 16 
+
+In distructor
+7 9 11 
+13 15 17 
+
+In constructor s = 1 2 3|4 5  6 
+Matrix a
+1 2 3 
+4 5 6 
+
+In constructor s = 1 2  
+Matrix b
+1 2 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+     Empty Matrix           
+
+In distructor
+     Empty Matrix           
+
+Matrix s
+     Empty Matrix           
+
+In constructor s = 
+Matrix expected ans
+     Empty Matrix           
+
+In distructor
+     Empty Matrix           
+
+In distructor
+     Empty Matrix           
+
+In distructor
+1 2 
+
+In distructor
+1 2 3 
+4 5 6 
+
+In constructor s = 1 2 3
+Matrix a
+1 2 3 
+
+In constructor s =  2 1 3 | 3 3 2| 4 1 2  
+Matrix b
+2 1 3 
+3 3 2 
+4 1 2 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+20 10 13 
+
+In distructor
+20 10 13 
+
+Matrix s
+20 10 13 
+
+In constructor s = 20 10 13
+matrix expected ans
+20 10 13 
+
+----------------------------------
+In distructor
+20 10 13 
+
+In distructor
+20 10 13 
+
+In distructor
+2 1 3 
+3 3 2 
+4 1 2 
+
+In distructor
+1 2 3 
+
+In constructor s = 3 4 2
+Matrix a
+3 4 2 
+
+In constructor s = 13 9 7 15|8 7 4 6| 6 4 0 3 
+Matrix b
+13 9 7 15 
+8 7 4 6 
+6 4 0 3 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+83 63 37 75 
+
+In distructor
+83 63 37 75 
+
+Matrix s
+83 63 37 75 
+
+In constructor s = 83 63 37 75
+matrix expected ans
+83 63 37 75 
+
+----------------------------------
+In distructor
+83 63 37 75 
+
+In distructor
+83 63 37 75 
+
+In distructor
+13 9 7 15 
+8 7 4 6 
+6 4 0 3 
+
+In distructor
+3 4 2 
+
+In constructor s = 3
+Matrix a
+3 
+
+In constructor s = 5 2 11|9 4 14
+Matrix b
+5 2 11 
+9 4 14 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+15 6 33 
+27 12 42 
+
+In distructor
+15 6 33 
+27 12 42 
+
+Matrix s
+15 6 33 
+27 12 42 
+
+In constructor s = 15 6 33|27 12 42
+matrix expected ans
+15 6 33 
+27 12 42 
+
+----------------------------------
+In distructor
+15 6 33 
+27 12 42 
+
+In distructor
+15 6 33 
+27 12 42 
+
+In distructor
+5 2 11 
+9 4 14 
+
+In distructor
+3 
+
+In constructor s = 5 2 11|9 4 14
+Matrix a
+5 2 11 
+9 4 14 
+
+In constructor s = 3 
+Matrix b
+3 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+15 6 33 
+27 12 42 
+
+In distructor
+15 6 33 
+27 12 42 
+
+Matrix s
+15 6 33 
+27 12 42 
+
+In constructor s = 15 6 33|27 12 42
+matrix expected ans
+15 6 33 
+27 12 42 
+
+----------------------------------
+In distructor
+15 6 33 
+27 12 42 
+
+In distructor
+15 6 33 
+27 12 42 
+
+In distructor
+3 
+
+In distructor
+5 2 11 
+9 4 14 
+
+In constructor s = 3 9 0 2 2 9 5 2|0 2 2 1 9 6 6 8|7 5 6 1 4 9 8 9|3 3 2 9 2 1 7 4|1 9 0 1 2 9 5 2|4 2 0 3 7 3 9 1|5 9 0 6 6 7 8 2|9 3 4 6 8 4 9 1
+Matrix a
+3 9 0 2 2 9 5 2 
+0 2 2 1 9 6 6 8 
+7 5 6 1 4 9 8 9 
+3 3 2 9 2 1 7 4 
+1 9 0 1 2 9 5 2 
+4 2 0 3 7 3 9 1 
+5 9 0 6 6 7 8 2 
+9 3 4 6 8 4 9 1 
+
+In constructor s = 6 1 6 0 8 3 0 0|6 8 9 0 6 6 7 2|4 8 2 0 5 4 6 7|2 4 4 2 2 6 9 8|4 8 2 2 4 6 4 1|1 5 5 6 4 7 5 5|7 4 6 5 0 6 5 3|2 3 7 0 1 3 8 5
+Matrix b
+6 1 6 0 8 3 0 0 
+6 8 9 0 6 6 7 2 
+4 8 2 0 5 4 6 7 
+2 4 4 2 2 6 9 8 
+4 8 2 2 4 6 4 1 
+1 5 5 6 4 7 5 5 
+7 4 6 5 0 6 5 3 
+2 3 7 0 1 3 8 5 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+In distructor
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+Matrix s
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+In constructor s = 132 170 200  87 128 186 175 106|122 186 166  86  92 182 195 123|197 235 267 104 179 243 253 178|128 140 164  63  86 162 194 140|118 164 184  85 110 174 166  98|138 142 144  83  91 162 137  82|187 222 244 106 160 244 232 141|201 212 210  97 171 230 204 142
+matrix expected ans
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+----------------------------------
+In distructor
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+In distructor
+132 170 200 87 128 186 175 106 
+122 186 166 86 92 182 195 123 
+197 235 267 104 179 243 253 178 
+128 140 164 63 86 162 194 140 
+118 164 184 85 110 174 166 98 
+138 142 144 83 91 162 137 82 
+187 222 244 106 160 244 232 141 
+201 212 210 97 171 230 204 142 
+
+In distructor
+6 1 6 0 8 3 0 0 
+6 8 9 0 6 6 7 2 
+4 8 2 0 5 4 6 7 
+2 4 4 2 2 6 9 8 
+4 8 2 2 4 6 4 1 
+1 5 5 6 4 7 5 5 
+7 4 6 5 0 6 5 3 
+2 3 7 0 1 3 8 5 
+
+In distructor
+3 9 0 2 2 9 5 2 
+0 2 2 1 9 6 6 8 
+7 5 6 1 4 9 8 9 
+3 3 2 9 2 1 7 4 
+1 9 0 1 2 9 5 2 
+4 2 0 3 7 3 9 1 
+5 9 0 6 6 7 8 2 
+9 3 4 6 8 4 9 1 
+
+In constructor s = 7 3|2 5 | 6 8| 9 0
+Matrix a
+7 3 
+2 5 
+6 8 
+9 0 
+
+In constructor s = 8 14 0 3 1|7 11 5 91 3|8 4 19 5 57
+Matrix b
+8 14 0 3 1 
+7 11 5 91 3 
+8 4 19 5 57 
+
+In constructor r = 0 c = 0 v = 0
+In copy constructor
+     Empty Matrix           
+
+In distructor
+     Empty Matrix           
+
+Matrix s
+     Empty Matrix           
+
+In constructor s = 
+matrix expected ans
+     Empty Matrix           
+
+----------------------------------
+In distructor
+     Empty Matrix           
+
+In distructor
+     Empty Matrix           
+
+In distructor
+8 14 0 3 1 
+7 11 5 91 3 
+8 4 19 5 57 
+
+In distructor
+7 3 
+2 5 
+6 8 
+9 0 
+
+All test passed. Your output shoyld NOT show  any memory leaks

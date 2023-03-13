@@ -8,252 +8,216 @@ ONLY INCLUDE HERE. YOU CANNOT ADD ANYTHING HERE
 -----------------------------------------------------------------*/
 #include "longnumber.h"
 
-longnumber::longnumber() {
-     _valueStr = nullptr;
-    _isNegative = false;
-    _isPositive = false;
-    _digitNum = 0;
-}
-
-longnumber::longnumber(const int& k) {
-    _isNegative = k < 0;
-    _isPositive = k > 0;
-    int remain = k;
-    while (remain != 0) {
-        _digitNum++;
-        remain /= 10;
-    }
-    if (k == 0) {
-        _digitNum = 1;
-    }
-    _valueStr = new char[_digitNum + 1];
-    _valueStr[_digitNum] = '\0';
-    int pointer = _digitNum - 1;
-    remain = k;
-    while (pointer >= 0) {
-        _valueStr[pointer] = abs(remain % 10) + '0';
-        remain /= 10;
-        pointer--;
-    }
-}
-
-longnumber::longnumber(const char* s) {
-    int start = 0;
-    int sLen = strlen(s);
-    _digitNum = sLen;
-    if (s[0] == '-') {
-        start = 1;
-        _isNegative = true;
-        _digitNum--;
-    }
-    else if (s[0] != '0') {
-        _isPositive = true;
-    }
-    _valueStr = new char[_digitNum + 1];
-    _valueStr[_digitNum] = '\0';
-    int pointer = _digitNum - 1;
-    while (pointer >= 0) {
-        _valueStr[pointer] = s[pointer + start];
-        pointer--;
-    }
-}
-
 longnumber::~longnumber() {
-    if (_valueStr != nullptr) {
-        delete[] _valueStr;
+    free_();
+}
+
+longnumber::longnumber(const int n) {
+    num_2_String_(n);
+}
+
+longnumber::longnumber(const char* a) {
+    int n = int(strlen(a));
+    assert(n);
+    int i = 0;
+    if (a[i] == '+') {
+        assert(n > 1);
+        sign_ = true;
+        i++;
     }
-}
-
-bool longnumber::is_negative() {
-    return _isNegative;
-}
-
-bool longnumber::is_positive() {
-    return _isPositive;
-}
-
-int longnumber::num_digits() {
-    return _digitNum;
-}
-
-ostream& operator<<(ostream& os, const longnumber& obj) {
-    if (obj._isNegative) {
-        os << '-';
+    else if (a[i] == '-') {
+        assert(n > 1);
+        sign_ = false;
+        i++;
     }
-    int count = 1;
-    int pointer = 0;
-    while (pointer < obj._digitNum) {
-        if (count > 40 && count % 40 == 1) {
-            cout << endl;
+    bool readZero = false;
+    for (i; i < n; i++) {
+        assert(a[i] >= '0' && a[i] <= '9');
+        if (a[i] == '0') {
+            if (readZero == false) {
+                readZero = true;
+            }
         }
-        cout << obj._valueStr[pointer];
-        count++;
-        pointer++;
-    }
-    return os;
-}
-
-longnumber& longnumber::operator=(const longnumber& obj) {
-    if (this != &obj) {
-        if (_valueStr != nullptr) {
-            delete[] _valueStr;
-        }
-        _isNegative = obj._isNegative;
-        _isPositive = obj._isPositive;
-        _digitNum = obj._digitNum;
-        _valueStr = new char[_digitNum + 1];
-        strcpy(_valueStr, obj._valueStr);
-    }
-    return *this;
-}
-
-bool longnumber::operator ==(const longnumber& obj) {
-    return _isEqual(obj);
-}
-
-bool longnumber::operator !=(const longnumber& obj) {
-    return !_isEqual(obj);
-}
-
-char longnumber::operator [](const int& i) {
-    return _valueStr[i];
-}
-
-longnumber longnumber::operator +(const int& n) {
-    return (*this) + longnumber(n);
-}
-
-longnumber longnumber::operator +(const longnumber& obj) {
-    longnumber res = longnumber();
-    if (_valueStr == nullptr || obj._valueStr == nullptr) {
-        return res;
-    }
-    int aLen = this->_digitNum;
-    int bLen = obj._digitNum;
-    int maxLen = max(aLen, bLen) + 1;
-    char* str = new char[maxLen + 1];
-    str[maxLen] = '\0';
-    int remain = 0;
-    int pointerA = aLen - 1;
-    int pointerB = bLen - 1;
-    int pointerC = maxLen - 1;
-    while (pointerC >= 0) {
-        if (pointerA >= 0) {
-            remain += this->_valueStr[pointerA] - '0';
-            pointerA--;
-        }
-        if (pointerB >= 0) {
-            remain += obj._valueStr[pointerB] - '0';
-            pointerB--;
-        }
-        str[pointerC] = remain % 10 + '0';
-        remain = remain / 10;
-        pointerC--;
-    }
-    int start = 0;
-    if (str[0] == '0') {
-        res._digitNum = maxLen - 1;
-        start = 1;
-    }
-    else {
-        res._digitNum = maxLen;
-    }
-    res._valueStr = new char[res._digitNum + 1];
-    res._valueStr[res._digitNum] = '\0';
-    for (int i = 0; i < res._digitNum; i++) {
-        res._valueStr[i] = str[i + start];
-    }
-    res._isNegative = false;
-    res._isPositive = true;
-    if (res._digitNum == 1 && res._valueStr[0] == '0') {
-        res._isPositive = false;
-    }
-    delete[] str;
-    return res;
-}
-
-longnumber longnumber::operator*(const int& n) {
-    return (*this) * longnumber(n);
-}
-
-longnumber longnumber::operator *(const longnumber& obj) {
-    longnumber res = longnumber();
-    if (_valueStr == nullptr || obj._valueStr == nullptr) {
-        return res;
-    }
-    int aLen = this->_digitNum;
-    int bLen = obj._digitNum;
-    const int cLen = aLen + bLen;
-    char* str = new char[cLen + 1];
-    for (int i = 0; i < cLen; i++) {
-        str[i] = 0;
-    }
-    str[cLen] = '\0';
-    int end = aLen - 1;
-    for (int p1 = aLen - 1; p1 >= 0; p1--) {
-        int add = 0;
-        int p = cLen - 1 - (end - p1);
-        for (int p2 = bLen - 1; p2 >= 0; p2--, p--) {
-            int num1 = _valueStr[p1] - '0';
-            int num2 = obj._valueStr[p2] - '0';
-            int sum = num1 * num2 + add + str[p];
-            str[p] = sum % 10;
-            add = sum / 10;
-        }
-        while (add > 0) {
-            str[p] += add;
-            add = str[p] / 10;
-            str[p] %= 10;
-            p--;
-        }
-    }
-    for (int i = 0; i < cLen; i++) {
-        str[i] += '0';
-    }
-    for (int i = 0; i < cLen; i++) {
-        if (str[i] != '0' || i == cLen - 1) {
-            res._digitNum = cLen - i;
-            res._valueStr = new char[res._digitNum + 1];
-            strcpy(res._valueStr, str + i);
+        else if ((a[i] != '0')) {
             break;
         }
     }
-    if ((this->_isNegative && obj._isNegative) || (this->_isPositive && obj._isPositive)) {
-        res._isPositive = true;
-        res._isNegative = false;
-    }
-    else if ((this->_isNegative && obj._isPositive) || (this->_isPositive && obj._isNegative)) {
-        res._isPositive = false;
-        res._isNegative = true;
+    int d = n - i + 1;
+    if (readZero && d == 1){
+        sign_ = true;
+        allocate_(2);
+        s_[0] = '0';
+        s_[1] = '\0';
     }
     else {
-        res._isPositive = false;
-        res._isNegative = false;
-    }
-    delete[] str;
-    return res;
-}
-
-longnumber longnumber::fact(const int& n) {
-    longnumber res = longnumber(1);
-    for (int i = 2; i <= n; i++) {
-        res = res * longnumber(i);
-    }
-    return res;
-}
-
-bool longnumber::_isEqual(const longnumber& obj) {
-    if (this->_isNegative != obj._isNegative ||this->_isPositive != obj._isPositive || this->_digitNum != obj._digitNum) {
-        return false;
-    }
-    int pointer = 0;
-    while (pointer < this->_digitNum) {
-        if (this->_valueStr[pointer] != obj._valueStr[pointer]) {
-            return false;
+        allocate_(d);
+        int j = 0;
+        for (i; i < n; i++) {
+            assert(a[i] >= '0' && a[i] <= '9');
+            s_[j++] = a[i];
         }
-        pointer++;
+        assert(j == d  - 1);
+        s_[j] = '\0';
     }
-    return true;;
+}
+
+ostream& operator<<(ostream& o, const longnumber& l) {
+    const int EOLNAT = 40;
+    int size = l.num_digits();
+    if (l.is_negative()) {
+        cout << "-";
+    }
+    int j = 0;
+    for (int i = 0; i < size; i++, j++) {
+        if (j == EOLNAT) {
+            j = 0;
+            o << endl;
+        }
+        o << l[i];
+    }
+    return o;
+}
+
+bool operator ==(const longnumber& a, const longnumber& b) {
+    if (a.sign_ == b.sign_) {
+        if (a.num_digits() == b.num_digits()) {
+            for (int i = 0; i < a.num_digits(); i++) {
+                if (a[i] != b[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+bool operator !=(const longnumber& a, const longnumber& b) {
+    return !(a == b);
+}
+
+longnumber operator +(const longnumber& a, const longnumber& b) {
+    assert(a.is_positive());
+    assert(b.is_positive());
+    if (a == 0) {
+        return b;
+    }
+    else if (b == 0) {
+        return a;
+    }
+    int space = a.num_digits();
+    if (b.num_digits() > space) {
+        space = b.num_digits();
+    }
+    space = space + 1 + 1;
+    longnumber c(0);
+    c.reserve_(space);
+    int al = a.num_digits() - 1;
+    int bl = b.num_digits() - 1;
+    int max = al;
+    if (bl > max) {
+        max = bl;
+    }
+    int z = 0;
+    int k = 0;
+    for (int i = max; i >= 0; i--) {
+        int x = 0;
+        if (al >= 0) {
+            x = a[al--] - '0';
+        }
+        int y = 0;
+        if (bl >= 0) {
+            y = b[bl--] - '0';
+        }
+        int t = x + y + z;
+        assert(t >= 0 && t <= 19);
+        if (t < 10) {
+            c.insert_at_pos_(t, space, k++);
+            z = 0;
+        }
+        else {
+            c.insert_at_pos_(t - 10, space, k++);
+            z = 1;
+        }
+    }
+    if (z == 1) {
+        c.insert_at_pos_(1, space, k++);
+    }
+    assert(k < space);
+    c[k] = '\0';
+    c.reverse_();
+    return c;
+}
+
+longnumber operator *(const longnumber& a, const int b) {
+    assert(a.is_positive());
+    if (a == 0 || (b == 0)) {
+        return 0;
+    }
+    longnumber ans(a);
+    int x = b;
+    if (b < 0) {
+        x = -b;
+    }
+    for (int i = 1; i < x; i++) {
+        ans = ans + a;
+    }
+    if (x != b) {
+        ans.change_sign(false);
+    }
+    return ans;
+}
+
+longnumber longnumber::fact(const int n) {
+    longnumber a(1);
+    for (int i = 2; i <= n; i++) {
+        a = a * i;
+    }
+    return a;
+}
+
+void longnumber::insert_at_pos_(char c, int space, int pos) {
+    longnumber& a = *(this);
+    assert(pos >= 0 && pos < space);
+    a[pos] = c;
+}
+
+void longnumber::insert_at_pos_(int i, int space, int pos) {
+    assert(i >= 0 && i < 10);
+    char c = i + '0';
+    insert_at_pos_(c, space, pos);
+}
+
+void longnumber::num_2_String_(int n) {
+    int s = 0;
+    char a[100] = { 0 };
+    sign_ = true;
+    if (n < 0) {
+        sign_ = false;
+        n = -n;
+    }
+    do {
+        a[s++] = n % 10 + '0';
+        n = n / 10;
+    } while (n);
+    a[s] = '\0';
+    for (int i = 0; i < s / 2; i++) {
+        char t = a[i];
+        a[i] = a[s - i - 1];
+        a[s - i - 1] = t;
+    }
+    allocate_(s + 1);
+    strcpy(s_, a);
+}
+
+void longnumber::reverse_() {
+    longnumber& a = *(this);
+    int n = a.num_digits();
+    for (int i = 0; i < n / 2; i++) {
+        char t = a[i];
+        a[i] = a[n - i - 1];
+        a[n - i - 1] = t;
+    }
 }
 //EOF
 

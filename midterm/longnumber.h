@@ -39,32 +39,60 @@ long number class
 ----------------------------------------------------------*/
 class longnumber {
 public:
-	longnumber();
-	longnumber(const int& k);
-	longnumber(const char* s);
+	longnumber(int i = 0);
+	longnumber(const char* n);
 	~longnumber();
-	bool is_negative();
-	bool is_positive();
-	int num_digits();
-	friend ostream& operator <<(ostream& o, const longnumber& obj);
-	bool operator ==(const longnumber& obj);
-	bool operator !=(const longnumber& obj);
-	char operator [](const int& i);
-	longnumber& operator=(const longnumber& obj);
-	longnumber operator+(const int& n);
-	longnumber operator +(const longnumber& obj);
-	longnumber operator*(const int& n);
-	longnumber operator *(const longnumber& obj);
-	static longnumber fact(const int& n);
+	longnumber(const longnumber& rhs) {
+		copy_(rhs);
+	}
+	longnumber& operator =(const longnumber& rhs) {
+		if (this != &(rhs)) {
+			free_();
+			copy_(rhs);
+		}
+		return *this;
+	}
+	friend ostream& operator <<(ostream& o, const longnumber& l);
+	char& operator [](int i) const {
+		return s_[i];
+	}
+	friend bool operator ==(const longnumber& a, const longnumber& b);
+	friend bool operator !=(const longnumber& a, const longnumber& b);
+	friend longnumber operator +(const longnumber& a, const longnumber& b);
+	friend longnumber operator *(const longnumber& a, const int b);
+	static longnumber fact(const int n);
+	bool is_positive() const { return sign_; }
+	bool is_negative() const { return (!(is_positive())); }
+	int num_digits() const { return int(strlen(s_)); }
+	
 private:
 		//Private data. YOU CANNOT USE STL. 0 marks will given if you add vector, string or set etc
 		//You can have any number of C++ prinitives you want
-	    char* _valueStr;
-		bool _isNegative = false;
-		bool _isPositive = false;
-		int _digitNum = 0;
+	    char* s_ = nullptr;
+		bool sign_ = true;
 		//Private functions. You can have any number of funcions
-		bool _isEqual(const longnumber& obj);
+		void num_2_String_(int n);
+		void reverse_();
+		void insert_at_pos_(char c, int space, int pos);
+		void insert_at_pos_(int i, int space, int pos);
+		void allocate_(int s) {
+			s_ = new char[s];
+		}
+		void free_() {
+			delete[] s_;
+		}
+		void copy_(const longnumber& rhs) {
+			allocate_(rhs.num_digits() + 1);
+			strcpy(s_, rhs.s_);
+			sign_ = rhs.sign_;
+		}
+		void change_sign(bool x) {
+			sign_ = x;
+		}
+		void reserve_(int s) {
+			free_();
+			allocate_(s);
+		}
 };
 
 //EOF

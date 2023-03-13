@@ -164,6 +164,12 @@ void testsmall::small_test_() {
 #endif
 #if 1
 	{
+		test_multiply_("-11111111012312391738912739821739172983712837891273981", -232, "2577777754856474883427755638643488132221378390775563592");
+		cout << "test multiple " << endl;
+	}
+#endif
+#if 1
+	{
 		test_multiply_("-111111110", 0, "0");
 		cout << "test multiple " << endl;
 	}
